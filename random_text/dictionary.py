@@ -24,6 +24,8 @@ class Dictionary(object):
         while line:
             words = re.split(r'[ \-"\n\r]+',line.rstrip())
             for j in words:
+                j = re.sub('^[\'\(\) \t]+', '', j)
+                j = re.sub('[\'\(\) \t]+$', '', j)
                 if word_sequence[0]  == '':
                     word_sequence[0] = j.lower()
                 else:
